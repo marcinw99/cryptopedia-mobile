@@ -7,6 +7,10 @@ features:
 - redirect to topic details screen upon clicking the topic tile
 - go back to main screen upon hitting the back arrow or swiping left
 
+# IMPORTANT
+
+- this is not a showcase of my code quality, app was created quickly and there are multiple refactors and optimisations to do
+
 <br>
 
 ---
