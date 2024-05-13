@@ -50,7 +50,11 @@ export default function HomeScreen() {
         <SectionList
           style={styles.listContainer}
           sections={sections}
-          renderItem={({ item }) => <Text>{item.label}</Text>}
+          renderItem={({ item }) => (
+            <View style={styles.listItemContainer}>
+              <Text style={styles.listItemLabel}>{item.label}</Text>
+            </View>
+          )}
           renderSectionHeader={({ section }) => <Text style={styles.sectionHeader}>{section.title}</Text>}
           keyExtractor={(item) => `article-tile${item.articleId}`}
         />
@@ -87,5 +91,17 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     padding: 12,
     backgroundColor: '#ddd',
+  },
+  listItemContainer: {
+    margin: 8,
+    padding: 4,
+    paddingTop: 8,
+    paddingBottom: 8,
+    borderRadius: 4,
+    backgroundColor: '#fff',
+  },
+  listItemLabel: {
+    fontSize: 18,
+    textDecorationLine: 'underline',
   },
 });
