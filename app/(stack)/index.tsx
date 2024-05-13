@@ -1,4 +1,5 @@
-import { SafeAreaView, SectionList, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, SectionList, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { useLinkProps } from '@react-navigation/native';
 
 export default function HomeScreen() {
   const sections = [
@@ -50,11 +51,16 @@ export default function HomeScreen() {
         <SectionList
           style={styles.listContainer}
           sections={sections}
-          renderItem={({ item }) => (
-            <View style={styles.listItemContainer}>
-              <Text style={styles.listItemLabel}>{item.label}</Text>
-            </View>
-          )}
+          renderItem={({ item }) => {
+            const linkProps = useLinkProps({ to: `/article/${item.articleId}` });
+            return (
+              <TouchableHighlight {...linkProps} style={styles.listItemContainer} underlayColor="#C6ABFF">
+                <View>
+                  <Text style={styles.listItemLabel}>{item.label}</Text>
+                </View>
+              </TouchableHighlight>
+            );
+          }}
           renderSectionHeader={({ section }) => <Text style={styles.sectionHeader}>{section.title}</Text>}
           keyExtractor={(item) => `article-tile${item.articleId}`}
         />
@@ -98,7 +104,6 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingBottom: 8,
     borderRadius: 4,
-    backgroundColor: '#fff',
   },
   listItemLabel: {
     fontSize: 18,
